@@ -22,6 +22,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <time.h>
+#include <Windows.h>
 
 #define LOSE_SPEED_VAR 0.9
 #define SKYBOX_EDGE_LEN_HALF 100
@@ -1737,10 +1738,12 @@ void specialup(int key, int, int)
 }
 
 int main(int argc, char** argv) {
+    HWND hWndConsole = GetConsoleWindow();
+    ShowWindow(hWndConsole, SW_HIDE);
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize(winW, winH);
-    glutCreateWindow("Octahedron - flat shading (GLSL)");
+    glutCreateWindow("Asteroid 3D");
     GLenum err = glewInit();
     if (err != GLEW_OK) {
         std::cerr << "GLEW init failed\n"; return -1;
